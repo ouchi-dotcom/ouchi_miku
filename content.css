@@ -1,0 +1,83 @@
+#floating-panda-root {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 2147483647;
+  user-select: none;
+  cursor: grab;
+}
+
+#floating-panda-root.dragging {
+  cursor: grabbing;
+}
+
+#floating-panda-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#floating-panda-speech {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 2px solid #222;
+  border-radius: 16px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+  white-space: nowrap;
+  color: #222;
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+#floating-panda-speech.visible {
+  opacity: 1;
+}
+
+/* 吹き出しの三角 */
+#floating-panda-speech::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: #222;
+}
+
+#floating-panda-speech::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  z-index: 1;
+  margin-top: -1px;
+}
+
+@keyframes panda-float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+#floating-panda-svg {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.25));
+  animation: panda-float 2.4s ease-in-out infinite;
+}
+
+#floating-panda-svg:hover {
+  animation: panda-float 2.4s ease-in-out infinite;
+  filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.35)) brightness(1.05);
+}

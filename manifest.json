@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "フローティングパンダ",
+  "version": "1.0",
+  "description": "画面上にパンダが現れてあなたに話しかけます",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
